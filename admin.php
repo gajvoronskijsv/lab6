@@ -25,7 +25,8 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']==0 ) {
 else{
   try {
     $db = new PDO('mysql:host=localhost;dbname=u20296', 'u20296', '1377191');
-    $row=$db->query("SELECT login FROM admin where login='".(string)$_SERVER['PHP_AUTH_USER']."' AND password='".(string)md5($_SERVER['PHP_AUTH_PW'])."'")->fetch();
+    $row=$db->query("SELECT login FROM admin where login='".$_SERVER['PHP_AUTH_USER']."' AND password='".md5($_SERVER['PHP_AUTH_PW'])."'")->fetch();
+    $db = null;
   }
   catch(PDOException $e){
     header('HTTP/l.1 401 Unauthorized');
@@ -33,8 +34,6 @@ else{
     exit();
   }
   if (!empty($row)){
-    $_SERVER['PHP_AUTH_USER']=0;
-    $_SERVER['PHP_AUTH_PW']=0;
     echo "<p>Добро пожаловать: " . htmlspecialchars($_SERVER['PHP_AUTH_USER']) . "<br />";
     echo "<form action='' method='post'>\n";
     echo "<input type='hidden' name='SeenBefore' value='1' />\n";
@@ -46,6 +45,8 @@ else{
     echo "<input type='submit' name='sendform' id='out' value='Создать нового пользователя'/>\n";
     echo "<input type='submit' name='sendform' id='out' value='Войти как пользователь'/>\n";
     echo "</form></p>\n";
+    $_SERVER['PHP_AUTH_USER']=0;
+    $_SERVER['PHP_AUTH_PW']=0;
     $num=1;
     $messages[] = sprintf("
       <head>
