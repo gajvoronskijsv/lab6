@@ -44,7 +44,7 @@ else{
     echo "<input type='submit' name='sendform' id='out' value='Создать нового пользователя'/>\n";
     echo "<input type='submit' name='sendform' id='out' value='Войти как пользователь'/>\n";
     echo "</form></p>\n";
-    $_SERVER['PHP_AUTH_USER']=FALSE;
+    $_SERVER['PHP_AUTH_USER']=0;
     //$_SERVER['PHP_AUTH_PW']=0;
     $num=1;
     $messages[] = sprintf("
@@ -130,7 +130,7 @@ else{
     }
   }
   else{
-  	FALSE$_SERVER['PHP_AUTH_USER']=0;
+  	$_SERVER['PHP_AUTH_USER']=0;
     //$_SERVER['PHP_AUTH_PW']=0;
     authenticate();
   }
