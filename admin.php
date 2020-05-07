@@ -19,7 +19,8 @@ if(isset($_POST['OldAuth'])){
 else{
   $p=0;
 }
-if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']==0 ) {
+if (!isset($_SERVER['PHP_AUTH_USER']) ||
+isset($_POST['SeenBefore']) && $p == $_SERVER['PHP_AUTH_USER']) {
   authenticate();
 }
 else{
@@ -44,8 +45,8 @@ else{
     echo "<input type='submit' name='sendform' id='out' value='Создать нового пользователя'/>\n";
     echo "<input type='submit' name='sendform' id='out' value='Войти как пользователь'/>\n";
     echo "</form></p>\n";
-    $_SERVER['PHP_AUTH_USER']=0;
-    $_SERVER['PHP_AUTH_PW']=0;
+    //$_SERVER['PHP_AUTH_USER']=0;
+    //$_SERVER['PHP_AUTH_PW']=0;
     $num=1;
     $messages[] = sprintf("
       <head>
@@ -130,8 +131,8 @@ else{
     }
   }
   else{
-  	$_SERVER['PHP_AUTH_USER']=0;
-    $_SERVER['PHP_AUTH_PW']=0;
+  	//$_SERVER['PHP_AUTH_USER']=0;
+    //$_SERVER['PHP_AUTH_PW']=0;
     authenticate();
   }
 }
