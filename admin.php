@@ -37,12 +37,12 @@ else{
     echo "<form action='' method='post'>\n";
     echo "<input type='hidden' name='SeenBefore' value='1' />\n";
     echo "<input type='hidden' name='OldAuth' value='".$_SERVER['PHP_AUTH_USER']."' />\n";
-    echo "<input type='hidden' name='save'/>\n";
+    echo "<input type='hidden' name='sendform'/>\n";
     echo "<input style='border-radius: 50px; margin:5px;' type='submit' value='Войти как администратор'/>\n";
     echo "</form></p>\n";
     echo "<form action='index.php' method='post'>\n";
-    echo "<input type='submit' name='save' id='out' value='Создать нового пользователя'/>\n";
-    echo "<input type='submit' name='save' id='out' value='Войти как пользователь'/>\n";
+    echo "<input type='submit' name='sendform' id='out' value='Создать нового пользователя'/>\n";
+    echo "<input type='submit' name='sendform' id='out' value='Войти как пользователь'/>\n";
     echo "</form></p>\n";
     $num=1;
     $messages[] = sprintf("
@@ -96,7 +96,7 @@ else{
           <td class='long'>%s</td>
           <td class='middle'>
             <form method='POST' action='delete.php'>
-              <input type='submit' name='save' value='%s' />
+              <input type='submit' name='sendform' value='%s' />
             </form>
           </td>
         </tr>

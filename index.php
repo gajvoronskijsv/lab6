@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 // Иначе, если запрос был методом POST, т.е. нужно проверить данные и сохранить их в XML-файл.
 else 
 {
-  if ($_POST['sendform']=='Отправить')
+  if ($_POST['sendform']=='Отправить' || $_POST['sendform']=='Создать нового пользователя')
   {
 	  // Проверяем ошибки.
 		$errors = FALSE;
@@ -376,11 +376,11 @@ else
 		  header('Location: index.php');
 		}
 	}
-	if ($_POST['sendform']=='exit' || $_POST['save']=='Создать нового пользователя'){
+	if ($_POST['sendform']=='exit' || $_POST['sendform']=='Создать нового пользователя'){
 		session_destroy();
     header('Location: index.php');
 	}
-	if ($_POST['sendform']=='enter'|| $_POST['save']=='Войти как пользователь'){
+	if ($_POST['sendform']=='enter'|| $_POST['sendform']=='Войти как пользователь'){
 		session_destroy();
     header('Location: login.php');
 	}

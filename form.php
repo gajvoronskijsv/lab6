@@ -58,7 +58,7 @@ if (!empty($messages)) {
       <form method="POST" action="admin.php">
 		  <input type='hidden' name='SeenBefore' value='0' />
     	    <input type='hidden' name='OldAuth' value='<?php print($_SERVER['PHP_AUTH_USER']); ?>'/>
-				  <input type='submit' name="save" id="out" value='Войти как администратор'/>
+				  <input type='submit' name="sendform" id="out" value='Войти как администратор'/>
 			</form>
       </div>
     </div>
