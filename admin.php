@@ -19,7 +19,7 @@ if(isset($_POST['OldAuth'])){
 else{
   $p=0;
 }
-if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']=='0' ) {
+if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']=="0" ) {
   authenticate();
 }
 else{
@@ -30,7 +30,7 @@ else{
   catch(PDOException $e){
     header('HTTP/l.1 401 Unauthorized');
     header('WWW-Authenticate: Basic rеаlm="admin.php"'); 
-    exit('');
+    exit();
   }
   if (!empty($row)){
     echo "<p>Добро пожаловать: " . htmlspecialchars($_SERVER['PHP_AUTH_USER']) . "<br />";
@@ -68,7 +68,8 @@ else{
         <th class='middle'>Удалить</th>
       </tr>
     ");
-    $_SERVER['PHP_AUTH_USER']='0';
+    $_SERVER['PHP_AUTH_USER']="0";
+    $_SERVER['PHP_AUTH_PW']="0";
     //строки из таблицы
     foreach($db->query('SELECT * FROM DBlab5') as $row){
       $n=1;
@@ -128,7 +129,8 @@ else{
     }
   }
   else{
-  	$_SERVER['PHP_AUTH_USER']='0';
+  	$_SERVER['PHP_AUTH_USER']="0";
+    $_SERVER['PHP_AUTH_PW']="0";
     authenticate();
   }
 }
