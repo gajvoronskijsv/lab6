@@ -20,7 +20,7 @@ else{
   $p=0;
 }
 if (!isset($_SERVER['PHP_AUTH_USER']) ||
-isset($_POST['SeenBefore']) && $p == $_SERVER['PHP_AUTH_USER']) {
+isset($_POST['SeenBefore']))  {
   authenticate();
 }
 else{
