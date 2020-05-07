@@ -19,8 +19,7 @@ if(isset($_POST['OldAuth'])){
 else{
   $p=0;
 }
-if (!isset($_SERVER['PHP_AUTH_USER']) || (
-$_POST['SeenBefore']=='1' && $p == $_SERVER['PHP_AUTH_USER'])) {
+if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']=='0' ) {
   authenticate();
 }
 else{
@@ -37,7 +36,7 @@ else{
     echo "<p>Добро пожаловать: " . htmlspecialchars($_SERVER['PHP_AUTH_USER']) . "<br />";
     echo "<form action='' method='post'>\n";
     echo "<input type='hidden' name='SeenBefore' value='1' />\n";
-    echo "<input type='hidden' name='OldAuth' value=\"" . htmlspecialchars($_SERVER['PHP_AUTH_USER']) . "\" />\n";
+    echo "<input type='hidden' name='OldAuth' value='".$_SERVER['PHP_AUTH_USER']."' />\n";
     echo "<input type='hidden' name='save'/>\n";
     echo "<input style='border-radius: 50px; margin:5px;' type='submit' value='Войти как администратор'/>\n";
     echo "</form></p>\n";
@@ -69,6 +68,7 @@ else{
         <th class='middle'>Удалить</th>
       </tr>
     ");
+    $_SERVER['PHP_AUTH_USER']='0';
     //строки из таблицы
     foreach($db->query('SELECT * FROM DBlab5') as $row){
       $n=1;
@@ -128,6 +128,7 @@ else{
     }
   }
   else{
+  	$_SERVER['PHP_AUTH_USER']='0';
     authenticate();
   }
 }
