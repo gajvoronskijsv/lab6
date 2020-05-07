@@ -25,8 +25,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER']==0 ) {
 else{
   try {
     $db = new PDO('mysql:host=localhost;dbname=u20296', 'u20296', '1377191');
-    $row=$db->query("SELECT login FROM admin where login='".$_SERVER['PHP_AUTH_USER']."' AND password='".md5($_SERVER['PHP_AUTH_PW'])."'")->fetch();
-    $db = null;
+    $row=$db->query("SELECT login FROM admin where login='".(string)$_SERVER['PHP_AUTH_USER']."' AND password='".(string)md5($_SERVER['PHP_AUTH_PW'])."'")->fetch();
   }
   catch(PDOException $e){
     header('HTTP/l.1 401 Unauthorized');
@@ -119,6 +118,7 @@ else{
       );
       $num=$num+1;
     }
+    $db = null;
     $messages[] = sprintf("</table>");
     if (!empty($messages)) {
       print('<div id="messages">');
