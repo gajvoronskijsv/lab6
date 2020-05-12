@@ -98,6 +98,7 @@ else{
           <td class='long'>%s</td>
           <td class='middle'>
             <form method='POST' action='delete.php'>
+              <input type='hidden' name='token' value='cant_be_hacked' />
               <input type='submit' name='sendform' value='%s' />
             </form>
           </td>
