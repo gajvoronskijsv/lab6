@@ -82,7 +82,7 @@ else {
     try {
     //setcookie('loginConnect_error', '1', time() + 24 * 60 * 60);
     $db = new PDO('mysql:host=localhost;dbname=u20296', 'u20296', '1377191');
-    $row=$db->query("SELECT login FROM DBlab5 where login='".mysql_real_escape_string((string)$_POST['login'])."' AND pass='".mysql_real_escape_string((string)md5($_POST['pass']))."'")->fetch();
+    $row=$db->query("SELECT login FROM DBlab5 where login=".$db->quote((string)$_POST['login'])." AND pass=".$db->quote((string)md5($_POST['pass'])))->fetch();
     $db = null;
 	}
 	catch(PDOException $e){}
